@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        redmine-history-only-comment
 // @namespace   ngyuki.net
-// @include     http://redmine.example.net/*
+// @include     https://my.redmine.jp/demo/*
 // @version     0.0.1
 // @grant       none
 // ==/UserScript==
@@ -27,7 +27,7 @@ $(function(){
                             height: $(this).outerHeight(true)
                         };
 
-                        $('<div style="position: absolute; z-index:99999; background-color:#ff0; opacity:0">')
+                        $('<div style="position: absolute; z-index:99999; background-color:#ffc; opacity:0">')
                             .css(css)
                             .appendTo('body')
                             .animate({'opacity':0.9}, {duration:100})
