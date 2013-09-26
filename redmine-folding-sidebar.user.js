@@ -25,17 +25,27 @@ $(function(){
     });
 
     $checkbox.click(function(){
-        if (this.checked)
-        {
-            $('#content').css('width', '').one('transitionend', function(){
+
+        var chk = this;
+
+        var complete = function(){
+            if (chk.checked)
+            {
                 $('#sidebar').fadeIn('fast');
-            });
+            }
+            else
+            {
+                $('#content').css('width', minwidth);
+            }
+        };
+
+        if (chk.checked)
+        {
+            $('#content').css('width', '').one('transitionend', complete);
         }
         else
         {
-            $('#sidebar').fadeOut('fast', function (){
-                $('#content').css('width', minwidth);
-            });
+            $('#sidebar').fadeOut('fast', complete);
         }
         localStorage['folding-sidebar'] = !this.checked - 0;
     });
