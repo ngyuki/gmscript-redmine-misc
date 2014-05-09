@@ -17,21 +17,32 @@ $(function(){
             {
                 $(selector)
                     .slideDown(undefined, function(){
-
                         var pos = $(this).position();
+                        var css = {};
 
-                        var css = {
-                            top: pos.top,
-                            left: pos.left,
-                            width: $(this).outerWidth(true),
-                            height: $(this).outerHeight(true)
-                        };
+                        if ($(this).hasClass('details'))
+                        {
+                            css = {
+                                top: pos.top,
+                                left: pos.left,
+                                width: $(this).outerWidth(true),
+                                height: $(this).outerHeight(true)
+                            };
+                        }
+                        else
+                        {
+                            css = {
+                                top: pos.top,
+                                left: pos.left,
+                                width: $(this).outerWidth(false),
+                                height: $(this).outerHeight(false)
+                            };      
+                        }
 
                         $('<div style="position: absolute; z-index:99999; background-color:#ffc; opacity:0">')
                             .css(css)
                             .appendTo('body')
                             .animate({'opacity':0.9}, {duration:100})
-                            //.queue(function(){var self=$(this);setTimeout(function(){self.dequeue()}, 100)})
                             .animate({'opacity':0}, {duration:500, complete: function(){
                                 $(this).remove();
                             }})
